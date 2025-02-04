@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "author": "Pedro Henrique Miranda",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -60.85,
+      "left": -188.45,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 15.6,
+      "left": -332.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 54,
+      "left": -332.2,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 92.4,
+      "left": -332.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 51.95,
+      "left": -278.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 90.35,
+      "left": -278.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 128.75,
+      "left": -278.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -15.8,
+      "left": -268.6,
+      "rotate": 180,
+      "attrs": { "color": "green", "bounce": "1" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP13", "r3:2", "green", [ "h0" ] ],
+    [ "pico:GP12", "r2:2", "green", [ "h0" ] ],
+    [ "pico:GP11", "r1:2", "green", [ "h0" ] ],
+    [ "r3:1", "led3:A", "green", [ "v0" ] ],
+    [ "r2:1", "led2:A", "green", [ "v0" ] ],
+    [ "r1:1", "led1:A", "green", [ "v0" ] ],
+    [ "led3:C", "pico:GND.1", "black", [ "v0", "h-38", "v-124.8" ] ],
+    [ "led2:C", "pico:GND.1", "black", [ "v0", "h-38", "v-124.8" ] ],
+    [ "led1:C", "pico:GND.1", "black", [ "v0", "h-38", "v-86.4" ] ],
+    [ "pico:GP5", "btn1:2.l", "green", [ "h-9.6", "v-28.8" ] ],
+    [ "pico:GND.2", "btn1:1.l", "black", [ "h-19.2" ] ]
+  ],
+  "dependencies": {}
+}
